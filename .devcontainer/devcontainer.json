@@ -1,0 +1,98 @@
+{
+  "name": "Broadcast Engineering Publishing Environment",
+
+  "build": {
+    "dockerfile": "Dockerfile"
+  },
+
+  "workspaceFolder": "/workspace",
+
+  "remoteUser": "root",
+
+  "mounts": ["source=texlive-cache,target=/root/.texlive,type=volume"],
+
+  "postCreateCommand": "bash .devcontainer/postCreate.sh",
+
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "James-Yu.latex-workshop",
+        "streetsidesoftware.code-spell-checker",
+        "streetsidesoftware.code-spell-checker-british-english",
+        "EditorConfig.EditorConfig",
+        "yzhang.markdown-all-in-one"
+      ],
+
+      "settings": {
+        // ---------------- Core Editor ----------------
+        "editor.formatOnSave": true,
+        "editor.rulers": [80, 100],
+        "editor.renderWhitespace": "boundary",
+        "editor.minimap.enabled": false,
+        "editor.wordWrap": "on",
+        "files.trimTrailingWhitespace": true,
+        "files.insertFinalNewline": true,
+
+        // ---------------- Files ----------------
+        "files.eol": "\n",
+
+        // ---------------- Markdown ----------------
+        "markdown.preview.breaks": true,
+        "markdown.extension.toc.updateOnSave": true,
+
+        // ---------------- Spell Checker ----------------
+        "cSpell.language": "en-GB",
+        "cSpell.enabledLanguageIds": ["markdown", "latex", "plaintext"],
+
+        // ---------------- Git ----------------
+        "git.autofetch": true,
+        "git.confirmSync": false,
+
+        // ---------------- LaTeX Workshop ----------------
+        "latex-workshop.view.pdf.viewer": "tab",
+
+        "latex-workshop.latex.autoBuild.run": "onSave",
+
+        "latex-workshop.synctex.afterBuild.enabled": true,
+
+        "latex-workshop.message.error.show": true,
+        "latex-workshop.message.warning.show": true,
+
+        "latex-workshop.latex.clean.enabled": true,
+        "latex-workshop.latex.clean.fileTypes": [
+          "*.aux",
+          "*.bbl",
+          "*.blg",
+          "*.fdb_latexmk",
+          "*.fls",
+          "*.log",
+          "*.nav",
+          "*.out",
+          "*.snm",
+          "*.synctex.gz",
+          "*.toc"
+        ],
+
+        "latex-workshop.latex.tools": [
+          {
+            "name": "latexmk (LuaLaTeX)",
+            "command": "latexmk",
+            "args": [
+              "-lualatex",
+              "-interaction=nonstopmode",
+              "-synctex=1",
+              "%DOC%"
+            ]
+          }
+        ],
+
+        "latex-workshop.latex.recipes": [
+          {
+            "name": "LuaLaTeX",
+            "tools": ["latexmk (LuaLaTeX)"]
+          }
+        ]
+      }
+    }
+  }
+}
