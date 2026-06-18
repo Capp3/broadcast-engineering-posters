@@ -1,0 +1,42 @@
+%%
+%% ============================================================================
+%% BEF Framework
+%% Typography
+%% ============================================================================
+%%
+
+\ProvidesFile{styles/typography.tex}
+
+\setlength{\parindent}{0pt}
+
+\setlength{\parskip}{6pt}
+
+\linespread{1.05}
+
+% -----------------------------------------------------------------------------
+% Section Styling
+% -----------------------------------------------------------------------------
+
+\RequirePackage{titlesec}
+
+\titleformat{\section}
+    {\BEFHeadingFont\Large\color{BEFPrimary}}
+    {}
+    {0pt}
+    {}
+
+\titleformat{\subsection}
+    {\BEFHeadingFont\large}
+    {}
+    {0pt}
+    {}
+
+% -----------------------------------------------------------------------------
+% Lists
+% -----------------------------------------------------------------------------
+
+\RequirePackage{enumitem}
+
+\setlist{
+    nosep
+}

@@ -44,6 +44,8 @@ RUN apt-get update && apt-get install -y \
     texlive-fonts-extra \
     texlive-science \
     texlive-bibtex-extra \
+    fonts-libertinus \
+    fonts-jetbrains-mono \
     && rm -rf /var/lib/apt/lists/*
 
 # -----------------------------------------------------------------------------

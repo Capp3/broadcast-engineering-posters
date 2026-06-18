@@ -1,0 +1,73 @@
+%%
+%% ============================================================================
+%% BEF Framework
+%% Header Component
+%% ============================================================================
+%%
+
+\ProvidesFile{components/header.tex}
+
+% -----------------------------------------------------------------------------
+% Header Height
+% -----------------------------------------------------------------------------
+
+\newlength{\BEFTitleBlockHeight}
+\setlength{\BEFTitleBlockHeight}{32mm}
+
+% -----------------------------------------------------------------------------
+% Header
+% -----------------------------------------------------------------------------
+
+\newcommand{\befHeader}
+{
+    \begin{tcolorbox}[
+        enhanced,
+        colback=white,
+        colframe=BEFPrimary,
+        boxrule=0.6pt,
+        arc=0pt,
+        left=4mm,
+        right=4mm,
+        top=2mm,
+        bottom=2mm,
+        width=\textwidth
+    ]
+
+    %----------------------------------------------------------------------
+    % Document metadata
+    %----------------------------------------------------------------------
+
+    \noindent
+    \begin{tabularx}{\textwidth}{@{}lXr@{}}
+
+    \textbf{BEF-\befDocumentNumber}
+    &
+    \centering
+    \small\textsf{\befSeries}
+    &
+    \textbf{Rev \befRevision}
+
+    \end{tabularx}
+
+    \vspace{5mm}
+
+    %----------------------------------------------------------------------
+    % Poster Title
+    %----------------------------------------------------------------------
+
+    \begin{center}
+
+        {\BEFTitleFont\fontsize{24}{28}\selectfont
+        \MakeUppercase{\befTitle}}
+
+        \vspace{2mm}
+
+        {\Large\itshape
+        \befSubtitle}
+
+    \end{center}
+
+    \end{tcolorbox}
+
+    \vspace{6mm}
+}

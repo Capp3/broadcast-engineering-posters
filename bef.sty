@@ -1,0 +1,129 @@
+```latex
+%%
+%% ============================================================================
+%% Broadcast Engineering Posters Framework
+%%
+%% File:        bef.sty
+%% Description: Core framework package for the Broadcast Engineering Posters
+%%              project.
+%%
+%% Version:     0.1.0
+%% License:     MIT
+%% ============================================================================
+%%
+
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{bef}[2026/06/18 v0.1.0 Broadcast Engineering Posters]
+
+% =============================================================================
+% Core Dependencies
+% =============================================================================
+
+\RequirePackage{geometry}
+\RequirePackage{graphicx}
+\RequirePackage{xcolor}
+\RequirePackage{fontspec}
+\RequirePackage{tikz}
+\RequirePackage{hyperref}
+\RequirePackage{qrcode}
+\RequirePackage{siunitx}
+\RequirePackage{tcolorbox}
+\RequirePackage{tabularx}
+\RequirePackage{array}
+\RequirePackage{booktabs}
+\RequirePackage{fancyhdr}
+\RequirePackage{lastpage}
+\RequirePackage{etoolbox}
+\RequirePackage{xparse}
+
+% =============================================================================
+% TikZ Libraries
+% =============================================================================
+
+\usetikzlibrary{
+    arrows.meta,
+    backgrounds,
+    calc,
+    fit,
+    positioning,
+    shapes.geometric
+}
+
+% =============================================================================
+% Internal Framework Loader
+% =============================================================================
+
+\newcommand{\befLoad}[1]{%
+    \InputIfFileExists{#1}%
+    {}%
+    {\PackageError{bef}{Required framework file '#1' not found}{}}
+}
+
+% =============================================================================
+% Load Shared Styles
+% =============================================================================
+
+\befLoad{styles/colours.tex}
+\befLoad{styles/fonts.tex}
+\befLoad{styles/geometry.tex}
+\befLoad{styles/typography.tex}
+
+% =============================================================================
+% Load Components
+% =============================================================================
+
+\befLoad{components/header.tex}
+\befLoad{components/footer.tex}
+\befLoad{components/document-control.tex}
+\def\bef@posterjoke{%
+Engineering: because "it should work" isn't a specification.%
+}
+
+% =============================================================================
+% Load TikZ Modules
+% =============================================================================
+
+\befLoad{tikz/resistor-columns.tex}
+\befLoad{tikz/ohms-law-wheel.tex}
+
+% =============================================================================
+% Placeholder Content Renderer
+% =============================================================================
+
+\providecommand{\befContent}{}
+
+% =============================================================================
+% Public Poster Command
+% =============================================================================
+
+\newcommand{\befMakePoster}
+{
+    \thispagestyle{empty}
+
+    %
+    % Header
+    %
+    \befHeader
+
+    %
+    % Permanent page elements
+    %
+    \befResistorColumns
+
+    %
+    % Poster body
+    %
+    \befContent
+
+    %
+    % Footer
+    %
+    \befFooter
+}
+
+% =============================================================================
+% Package End
+% =============================================================================
+
+\endinput
+```
