@@ -7,15 +7,17 @@
 
 \ProvidesFile{styles/fonts.tex}
 
-\defaultfontfeatures{
-    Ligatures=TeX
-}
+\defaultfontfeatures{Ligatures=TeX}
 
 \setmainfont{Libertinus Serif}
 
 \setsansfont{Libertinus Sans}
 
-\setmonofont{JetBrains Mono}
+\IfFontExistsTF{JetBrains Mono}{%
+    \setmonofont{JetBrains Mono}%
+}{%
+    \setmonofont{Libertinus Mono}%
+}
 
 % -----------------------------------------------------------------------------
 % Convenience Commands

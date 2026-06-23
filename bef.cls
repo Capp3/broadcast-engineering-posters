@@ -113,6 +113,11 @@
 % =============================================================================
 
 \newcommand{\befDocumentNumber}{\bef@documentnumber}
+\newcommand{\befFormattedDocumentNumber}{%
+    BEF-\ifnum\bef@documentnumber<10 00\else
+         \ifnum\bef@documentnumber<100 0\fi\fi
+    \bef@documentnumber
+}
 \newcommand{\befRevision}{\bef@revision}
 \newcommand{\befSeries}{\bef@series}
 
@@ -149,6 +154,14 @@
         pdfcreator={Broadcast Engineering Posters Framework},
         pdfproducer={LuaLaTeX}
     }
+
+    \typeout{}
+    \typeout{BEF Framework v\befversion}
+    \typeout{}
+    \typeout{Document : \befFormattedDocumentNumber}
+    \typeout{Title    : \befTitle}
+    \typeout{Revision : \befRevision}
+    \typeout{}
 }
 
 % =============================================================================

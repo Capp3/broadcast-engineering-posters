@@ -9,16 +9,12 @@
 
 \geometry{
     paper=a4paper,
-
     left=22mm,
     right=22mm,
-
     top=18mm,
     bottom=18mm,
-
     headheight=0pt,
     headsep=0pt,
-
     footskip=10mm
 }
 
@@ -34,3 +30,9 @@
 
 \newlength{\BEFFooterHeight}
 \setlength{\BEFFooterHeight}{18mm}
+
+\newlength{\BEFContentTop}
+\setlength{\BEFContentTop}{\dimexpr\BEFHeaderHeight + 18mm\relax}
+
+\newlength{\BEFContentBottom}
+\setlength{\BEFContentBottom}{\dimexpr\BEFFooterHeight + 18mm\relax}

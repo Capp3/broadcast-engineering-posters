@@ -1,0 +1,30 @@
+%%
+%% ============================================================================
+%% BEF Framework
+%% Footer Component
+%% ============================================================================
+%%
+
+\ProvidesFile{components/footer.tex}
+
+% -----------------------------------------------------------------------------
+% Footer
+% -----------------------------------------------------------------------------
+
+\newcommand{\befFooter}
+{
+    \vfill
+
+    \noindent\textcolor{BEFPrimary}{\rule{\textwidth}{0.6pt}}
+
+    \vspace{2mm}
+
+    \small\noindent
+    \begin{tabularx}{\textwidth}{@{}lXr@{}}
+        \textcolor{BEFGrey30}{\textsf{© \the\year\ Broadcast Engineering Posters}}
+        &
+        \centering\textit{\befPosterJoke}
+        &
+        \textcolor{BEFGrey30}{\textsf{BEF Framework v\befversion}}
+    \end{tabularx}
+}

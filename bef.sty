@@ -1,4 +1,3 @@
-```latex
 %%
 %% ============================================================================
 %% Broadcast Engineering Posters Framework
@@ -27,7 +26,6 @@
 \RequirePackage{hyperref}
 \RequirePackage{qrcode}
 \RequirePackage{siunitx}
-\RequirePackage{tcolorbox}
 \RequirePackage{tabularx}
 \RequirePackage{array}
 \RequirePackage{booktabs}
@@ -93,11 +91,67 @@ Engineering: because "it should work" isn't a specification.%
 \providecommand{\befContent}{}
 
 % =============================================================================
+% Layout Debug Mode
+% =============================================================================
+
+\newif\ifbef@debuglayout
+\bef@debuglayoutfalse
+
+\newif\ifbef@postermade
+\bef@postermadefalse
+
+\newcommand{\BEFDebugLayout}{\bef@debuglayouttrue}
+
+\newcommand{\bef@drawdebugoverlay}
+{
+    \begin{tikzpicture}[remember picture, overlay]
+
+        % Page margin box
+        \draw[BEFGrey60, dashed, line width=0.4pt]
+            ([xshift=22mm,  yshift=-18mm]current page.north west)
+            rectangle
+            ([xshift=-22mm, yshift=18mm]current page.south east);
+
+        % Header region
+        \fill[BEFBlue, opacity=0.08]
+            (current page.north west)
+            rectangle
+            ([xshift=\paperwidth, yshift=-\BEFContentTop]current page.north west);
+
+        % Content region
+        \fill[BEFGreen, opacity=0.06]
+            ([yshift=-\BEFContentTop]current page.north west)
+            rectangle
+            ([yshift=\BEFContentBottom]current page.south west);
+
+        % Footer region
+        \fill[BEFOrange, opacity=0.08]
+            (current page.south west)
+            rectangle
+            ([xshift=\paperwidth, yshift=\BEFContentBottom]current page.south west);
+
+        % Left resistor column boundary
+        \fill[BEFRed, opacity=0.06]
+            (current page.north west)
+            rectangle
+            ([xshift=\BEFMarginWidth, yshift=0]current page.south west);
+
+        % Right resistor column boundary
+        \fill[BEFRed, opacity=0.06]
+            ([xshift=-\BEFMarginWidth]current page.north east)
+            rectangle
+            (current page.south east);
+
+    \end{tikzpicture}
+}
+
+% =============================================================================
 % Public Poster Command
 % =============================================================================
 
 \newcommand{\befMakePoster}
 {
+    \bef@postermadetrue
     \thispagestyle{empty}
 
     %
@@ -111,14 +165,20 @@ Engineering: because "it should work" isn't a specification.%
     \befResistorColumns
 
     %
-    % Poster body
+    % Poster body (optional hook; content may also follow \makeposter)
     %
     \befContent
+}
 
-    %
-    % Footer
-    %
-    \befFooter
+\AtEndDocument
+{
+    \ifbef@postermade
+        \befFooter
+
+        \ifbef@debuglayout
+            \bef@drawdebugoverlay
+        \fi
+    \fi
 }
 
 % =============================================================================
@@ -126,4 +186,3 @@ Engineering: because "it should work" isn't a specification.%
 % =============================================================================
 
 \endinput
-```

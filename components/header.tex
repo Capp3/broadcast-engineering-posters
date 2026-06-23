@@ -1,0 +1,44 @@
+%%
+%% ============================================================================
+%% BEF Framework
+%% Header Component
+%% ============================================================================
+%%
+
+\ProvidesFile{components/header.tex}
+
+% -----------------------------------------------------------------------------
+% Header
+% -----------------------------------------------------------------------------
+
+\newcommand{\befHeader}
+{
+    \noindent\textcolor{BEFPrimary}{\rule{\textwidth}{0.6pt}}
+
+    \vspace{3mm}
+
+    \noindent
+    \begin{tabularx}{\textwidth}{@{}lXr@{}}
+        \textbf{\befFormattedDocumentNumber}
+        &
+        \centering\small\textsf{\befSeries}
+        &
+        \textbf{Rev \befRevision}
+    \end{tabularx}
+
+    \vspace{4mm}
+
+    \begin{center}
+        {\BEFTitleFont\fontsize{24}{28}\selectfont\befTitle}
+
+        \vspace{2mm}
+
+        {\Large\itshape\befSubtitle}
+    \end{center}
+
+    \vspace{3mm}
+
+    \noindent\textcolor{BEFPrimary}{\rule{\textwidth}{0.6pt}}
+
+    \vspace{6mm}
+}
